@@ -1,0 +1,54 @@
+-- AFK TIMER (Always Running) + Draggable UI + Blue Theme
+
+local player = game.Players.LocalPlayer
+
+-- UI
+local gui = Instance.new("ScreenGui", game.CoreGui)
+gui.Name = "AFK_Timer"
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0, 220, 0, 90)
+frame.Position = UDim2.new(0.5, -110, 0, 50)
+frame.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+frame.BorderSizePixel = 0
+frame.Active = true
+frame.Draggable = true
+
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1, 0, 0.4, 0)
+title.Text = "AFK TIMER"
+title.TextScaled = true
+title.BackgroundTransparency = 1
+title.TextColor3 = Color3.new(1,1,1)
+
+local timer = Instance.new("TextLabel", frame)
+timer.Size = UDim2.new(1, 0, 0.6, 0)
+timer.Position = UDim2.new(0, 0, 0.4, 0)
+timer.Text = "00:00:00"
+timer.TextScaled = true
+timer.BackgroundTransparency = 1
+timer.TextColor3 = Color3.new(1,1,1)
+
+-- الوقت يبدأ من 0 ويكمل دائمًا
+local seconds = 0
+local minutes = 0
+local hours = 0
+
+-- العداد ما يوقف نهائيًا
+while true do
+	task.wait(1)
+
+	seconds += 1
+
+	if seconds >= 60 then
+		seconds = 0
+		minutes += 1
+	end
+
+	if minutes >= 60 then
+		minutes = 0
+		hours += 1
+	end
+
+	timer.Text = string.format("%02d:%02d:%02d", hours, minutes, seconds)
+end
