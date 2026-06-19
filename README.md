@@ -1,0 +1,2 @@
+# -AFK-Timer-
+سكربتAFKjfjfifffjfnfhhfjfjff
